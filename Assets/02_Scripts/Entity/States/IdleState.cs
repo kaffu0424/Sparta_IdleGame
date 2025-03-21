@@ -5,7 +5,8 @@ public class IdleState : BaseState
     public IdleState(BaseEntity owner) : base(owner)
     {
         // owner 오브젝트의 Idle 인터페이스 가져오기
-        owner.TryGetComponent(out idleBehaviour);
+        if(owner.TryGetComponent(out idleBehaviour))
+            idleBehaviour.InitIdle(owner);
     }
 
     public override void Enter()
